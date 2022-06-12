@@ -1,0 +1,72 @@
+{
+  "name": "@console/node-healthcheck-plugin",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "yarn clean && NODE_ENV=production yarn ts-node node_modules/.bin/webpack",
+    "build-dev": "yarn clean && yarn ts-node node_modules/.bin/webpack",
+    "http-server": "./http-server.sh dist",
+    "i18n": "i18next \"src/**/*.{js,jsx,ts,tsx}\" [-oc] -c i18next-parser.config.js",
+    "ts-node": "ts-node -O '{\"module\":\"commonjs\"}'"
+  },
+  "devDependencies": {
+    "classnames": "2.2.6",
+    "comment-json": "4.x",
+    "copy-webpack-plugin": "6.4.1",
+    "css-loader": "0.28.x",
+    "file-loader": "1.1.11",
+    "html-webpack-plugin": "5.5.0",
+    "http-server": "0.12.x",
+    "i18next": "21.6.0",
+    "i18next-parser": "6.4.0",
+    "read-pkg": "5.x",
+    "style-loader": "0.23.1",
+    "ts-loader": "9.x",
+    "ts-node": "5.0.1",
+    "typescript": "4.x",
+    "webpack": "5.68.0",
+    "webpack-cli": "4.9.x",
+    "yup": "0.27.0"
+  },
+  "consolePlugin": {
+    "name": "node-healthcheck-plugin",
+    "version": "0.0.0",
+    "displayName": "Node Healthcheck Plugin",
+    "description": "Node Healthcheck Plugin",
+    "exposedModules": {
+      "nodeHealthCheckListPage": "./components/list/NodeHealthCheckListPage.tsx",
+      "nodeHealthCheckCreatePage": "./components/editor/NodeHealthCheckCreatePage.tsx",
+      "nodeHealthCheckEditPage": "./components/editor/NodeHealthCheckEditPage.tsx"
+    },
+    "dependencies": {
+      "@console/pluginAPI": "*"
+    }
+  },
+  "dependencies": {
+    "@openshift-console/dynamic-plugin-sdk": "0.0.11",
+    "@openshift-console/dynamic-plugin-sdk-internal": "0.0.9",
+    "@openshift-console/dynamic-plugin-sdk-webpack": "0.0.7",
+    "@openshift-console/plugin-shared": "0.0.1",
+    "@patternfly/react-core": "4.221.3",
+    "@patternfly/react-icons": "4.57.2",
+    "@types/classnames": "2.2.7",
+    "@types/lodash": "4.14.182",
+    "@types/react": "16.8.13",
+    "@types/react-router-dom": "5.1.2",
+    "formik": "2.2.6",
+    "fuse.js": "6.4.6",
+    "immutable": "4.0.0",
+    "js-yaml": "4.1.0",
+    "lodash": "4.17.21",
+    "lodash-es": "4.17.21",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-helmet": "6.1.0",
+    "react-i18next": "11.7.3",
+    "react-router": "5.2.0",
+    "react-router-dom": "5.2.0",
+    "sass": "^1.52.3",
+    "sass-loader": "^13.0.0"
+  }
+}

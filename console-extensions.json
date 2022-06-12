@@ -1,0 +1,56 @@
+[
+  {
+    "type": "console.page/route",
+    "properties": {
+      "exact": true,
+      "path": ["/node-healthcheck"],
+      "component": {
+        "$codeRef": "nodeHealthCheckListPage.default"
+      }
+    }
+  },
+  {
+    "type": "console.navigation/href",
+    "properties": {
+      "id": "admin-node-healthcheck",
+      "perspective": "admin",
+      "section": "compute",
+      "name": "%plugin__node-healthcheck-plugin~NodeHealthchecks%",
+      "href": "/node-healthcheck",
+      "insertAfter": "machinehealthchecks"
+    }
+  },
+  {
+    "type": "console.resource/create",
+    "properties": {
+      "model": {
+        "kind": "NodeHealthCheck",
+        "group": "remediation.medik8s.io",
+        "version": "v1alpha1"
+      },
+      "component": {
+        "$codeRef": "nodeHealthCheckCreatePage.default"
+      }
+    }
+  },
+  {
+    "type": "console.page/route",
+    "properties": {
+      "path": [
+        "/k8s/cluster/remediation.medik8s.io~v1alpha1~NodeHealthCheck/:name/edit"
+      ],
+      "component": { "$codeRef": "nodeHealthCheckEditPage.default" }
+    }
+  },
+  {
+    "type": "console.page/route",
+    "properties": {
+      "path": [
+        "/k8s/cluster/remediation.medik8s.io~v1alpha1~NodeHealthCheck/:name/~new"
+      ],
+      "component": {
+        "$codeRef": "nodeHealthCheckCreatePage.default"
+      }
+    }
+  }
+]

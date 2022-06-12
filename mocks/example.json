@@ -1,0 +1,39 @@
+{
+  "apiVersion": "remediation.medik8s.io/v1alpha1",
+  "kind": "NodeHealthCheck",
+  "metadata": {
+    "name": "nodehealthcheck-sample1",
+    "labels": {
+      "app": "frontend"
+    }
+  },
+  "spec": {
+    "minHealthy": "49%",
+    "remediationTemplate": {
+      "apiVersion": "poison-pill.medik8s.io/v1alpha1",
+      "name": "group-x",
+      "namespace": "openshift-operators",
+      "kind": "PoisonPillRemediationTemplate"
+    },
+    "selector": {
+      "matchExpressions": [
+        {
+          "key": "node-role.kubernetes.io/worker",
+          "operator": "Exists"
+        }
+      ]
+    },
+    "unhealthyConditions": [
+      {
+        "duration": "300s",
+        "type": "Ready",
+        "status": "False"
+      },
+      {
+        "duration": "300s",
+        "type": "Ready",
+        "status": "Unknown"
+      }
+    ]
+  }
+}
